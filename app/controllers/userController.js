@@ -22,6 +22,9 @@ const putHandler = async (req, res) => {
 
 const deleteHandler = async (req, res) => {
     const id = req.params.id;
+    if (!id) {
+        res.status(400).send('Id not provided');
+    }
     await deleteById(id);
     res.status(200).send("User deleted");
 }
@@ -29,7 +32,7 @@ const deleteHandler = async (req, res) => {
 router.get('/', getHandler);
 router.post('/', postHandler);
 router.put('/', putHandler);
-router.delete('/', deleteHandler);
+router.delete('/:id', deleteHandler);
 
 
 const configure = (app) => {
