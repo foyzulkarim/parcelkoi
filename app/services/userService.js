@@ -8,7 +8,7 @@ export const getAllUsers = async () => {
 }
 
 export const saveUser = async (user) => {
-    const model = new models.User({ username: user.username, createdAt: new Date() });
+    const model = new models.User(user);
     const savedUser = await model.save();
     return savedUser;
 };
@@ -27,7 +27,7 @@ export const update = async (user) => {
 }
 
 export const deleteById = async (id) => {
-    const User = models.User;    
+    const User = models.User;
     let model = await User.findById(id);
     if (model) {
         let result = await User.deleteOne({ _id: id });
