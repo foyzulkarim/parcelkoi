@@ -34,6 +34,11 @@
             "date": 1600182534288,
             "name": "application-error-2020-09-15-23.log",
             "hash": "c4f9dc3c24e791bdfec52f870787d2e7"
+        },
+        {
+            "date": 1600185624148,
+            "name": "application-error-2020-09-16-00.log",
+            "hash": "49d80afce43d9d3c07722233988dd025"
         }
     ]
 }
