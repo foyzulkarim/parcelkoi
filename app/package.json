@@ -4,19 +4,24 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -r esm index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon -r esm server.js",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "babel-jest": "^26.3.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "express-winston": "^4.0.5",
+    "jest": "^26.4.2",
     "joi": "^17.2.1",
     "mongoose": "^5.10.0",
     "nodemon": "^2.0.4",
+    "supertest": "^4.0.2",
     "winston": "^3.3.3",
     "winston-daily-rotate-file": "^4.5.0",
     "winston-elasticsearch": "^0.10.0",
