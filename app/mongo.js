@@ -9,9 +9,9 @@ const log = (msg) => console.log(msg);
 export const connectWithDb = () => {
     mongoose.connect(uri, options, (err, db) => {
         if (err) {
-            console.error(err);
+            //console.error(err);
+            throw err;
         }
-
-        else log("database connection established");
+        //else log("database connection established");
     });
 };
