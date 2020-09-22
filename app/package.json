@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon -r esm server.js",
-    "test": "jest"
+    "test": "jest --runInBand --force-exit"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +17,6 @@
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "express-winston": "^4.0.5",
-    "jest": "^26.4.2",
     "joi": "^17.2.1",
     "mongoose": "^5.10.0",
     "nodemon": "^2.0.4",
@@ -26,5 +25,15 @@
     "winston-daily-rotate-file": "^4.5.0",
     "winston-elasticsearch": "^0.10.0",
     "winston-mongodb": "^5.0.5"
+  },
+  "devDependencies": {
+    "@shelf/jest-mongodb": "^1.2.3",
+    "jest": "^26.4.2",
+    "mongodb-memory-server": "^6.8.0"
+  },
+  "config": {
+    "mongodbMemoryServer": {
+      "version": "latest"
+    }
   }
 }
