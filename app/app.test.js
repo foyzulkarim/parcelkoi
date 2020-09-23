@@ -1,3 +1,5 @@
+// console.log(process.env);
+
 import request from 'supertest';
 import app from './app';
 

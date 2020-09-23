@@ -1,12 +1,15 @@
 import express from "express";
 import configure from "./controllers";
-import { connectWithDb, uri } from "./mongo";
+import { connectWithDb, mongoUri } from "./mongo";
 import { handleErrors } from "./middlewares/handleErrors";
 import winston from "winston";
 import expressWinston from "express-winston";
 import winstonFile from "winston-daily-rotate-file";
 import winstonMongo from "winston-mongodb";
 import { ElasticsearchTransport } from "winston-elasticsearch";
+
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
 
@@ -52,7 +55,7 @@ const fileErrorTransport = new (winston.transports.DailyRotateFile)(
 );
 
 const mongoErrorTransport = new winston.transports.MongoDB({
-    db: uri,
+    db: mongoUri,
     metaKey: 'meta'
 })
 

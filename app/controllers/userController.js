@@ -7,6 +7,7 @@ const router = express.Router();
 
 const getHandler = async (req, res, next) => {
     try {
+        console.log('SOME_VAR\t', process.env.SOME_VAR);
         const users = await getAllUsers();
         res.status(200).send(users);
     } catch (error) {

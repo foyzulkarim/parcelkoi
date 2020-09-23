@@ -1,12 +1,11 @@
 import mongoose from "mongoose";
 
-export const uri = "mongodb://localhost:27017/parcelkoi";
+export const mongoUri = "mongodb://localhost:27017/parcelkoi";
 const options = {};
 
+export const connectWithDb = (uri) => {
+    if (!uri) uri = mongoUri;
 
-const log = (msg) => console.log(msg);
-
-export const connectWithDb = () => {
     mongoose.connect(uri, options, (err, db) => {
         if (err) {
             //console.error(err);
