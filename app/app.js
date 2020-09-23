@@ -5,7 +5,7 @@ import { handleErrors } from "./middlewares/handleErrors";
 import winston from "winston";
 import expressWinston from "express-winston";
 import winstonFile from "winston-daily-rotate-file";
-import winstonMongo from "winston-mongodb";
+//import winstonMongo from "winston-mongodb";
 import { ElasticsearchTransport } from "winston-elasticsearch";
 
 const app = express();
@@ -51,10 +51,10 @@ const fileErrorTransport = new (winston.transports.DailyRotateFile)(
     }
 );
 
-const mongoErrorTransport = new winston.transports.MongoDB({
-    db: uri,
-    metaKey: 'meta'
-})
+// const mongoErrorTransport = new winston.transports.MongoDB({
+//     db: uri,
+//     metaKey: 'meta'
+// })
 
 const elasticsearchOptions = {
     level: 'info',
@@ -79,7 +79,7 @@ const errorLogger = expressWinston.errorLogger({
     transports: [
         new winston.transports.Console(),
         fileErrorTransport,
-        mongoErrorTransport,
+        //mongoErrorTransport,
         esTransport
     ],
     format: winston.format.combine(winston.format.colorize(), winston.format.json()),
