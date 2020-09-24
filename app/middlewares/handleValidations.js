@@ -11,6 +11,9 @@ export const handleValidation = (validate) => {
         const { details } = result.error;
         const messages = details.map((e) => e.message);
         const msg = messages.join(',');
-        throw new BadRequest(msg);
+        //throw new BadRequest(msg);
+        return res.status(400).json({
+            correlationId: '123', message: msg
+        });
     }
 }

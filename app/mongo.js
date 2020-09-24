@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
+import * as Constants from "./constants";
 
-export const mongoUri = "mongodb://localhost:27017/parcelkoi";
+export const mongoUri = Constants.MongoDB_URI;
 const options = {};
 
 export const connectWithDb = (uri) => {
@@ -11,6 +12,6 @@ export const connectWithDb = (uri) => {
             //console.error(err);
             throw err;
         }
-        //else log("database connection established");
+        else console.log("database connection established ", uri);
     });
 };
