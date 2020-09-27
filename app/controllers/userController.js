@@ -1,7 +1,7 @@
 import express from "express";
 import { saveUser, getAllUsers, update, deleteById } from "../services/userService";
 import validators from "../models/view-models";
-import { handleValidation } from "../middlewares/handleValidations";
+import { handleValidation } from "../middlewares";
 
 const router = express.Router();
 
