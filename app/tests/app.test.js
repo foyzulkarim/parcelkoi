@@ -1,6 +1,7 @@
 import request from "supertest";
 import app from "../src/app";
 
+jest.mock('../src/services/userService');
 
 describe('app test suite', () => {
     test('my firt test', async () => {
@@ -11,6 +12,7 @@ describe('app test suite', () => {
         console.log('my firt test');
         let response = await request(app).get('/users');
         expect(response.statusCode).toBe(200);
-        console.log(response.body);
+        let users = response.body;
+        expect(users.length).toBe(1);
     })
 })
