@@ -1,0 +1,59 @@
+version: "3.8"
+services:
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+      - "27017:27017" # whatever port u r using
+    networks:
+      - parcelkoi-net
+    volumes:
+      - C:\github\my\parcelkoi-server\app:/usr/share/mongo/data
+  elasticsearch:
+    image: elasticsearch:7.9.2
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+    ports:
+      - "9200:9200"
+    networks:
+      - parcelkoi-net
+    volumes:
+      - data02:/usr/share/elasticsearch/data
+  kibana:
+    image: kibana:7.9.2
+    container_name: kibana
+    ports:
+      - "5601:5601"
+    networks:
+      - parcelkoi-net
+    volumes:
+      - data03:/usr/share/kibana/data
+  parcelkoi:
+    image: foyzulkarim/parcelkoi
+    container_name: parcelkoi
+    ports:
+      - "3000:3000"
+    networks:
+      - parcelkoi-net
+    volumes:
+      - data04:/usr/share/parcelkoi/data
+    environment:
+      - DEBUG=1
+      - MONGODB_HOST=mongo
+    depends_on:
+      - mongo
+      - elasticsearch
+      - kibana
+networks:
+  parcelkoi-net:
+    driver: bridge
+volumes:
+  data01:
+    driver: local
+  data02:
+    driver: local
+  data03:
+    driver: local
+  data04:
+    driver: local

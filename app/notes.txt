@@ -1,0 +1,1 @@
+ docker run --name mongo --net parcelkoi-net -p:27017:27017 mongo:latest

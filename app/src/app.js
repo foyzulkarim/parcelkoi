@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(handleRequest);
 
 if (process.env.ENVIRONMENT != 'TEST')
-    app.use(infoLogger);
+    app.use(infoLogger());
 
 configure(app);
 
