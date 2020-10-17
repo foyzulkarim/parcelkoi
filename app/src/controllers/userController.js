@@ -60,14 +60,7 @@ const deleteHandler = async (req, res, next) => {
     }
 }
 
-/**
- * @swagger
- * /users:
- *    get:
- *      description: This should return all users
- */
 router.get('/', getHandler);
-
 router.get('/:id', getByIdHandler);
 router.post('/', handleValidation(validators.userSchemaValidate), postHandler);
 router.put('/', putHandler);

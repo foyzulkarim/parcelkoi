@@ -1,7 +1,7 @@
-import userRoutes from "./userController";
+import routes from "./routes";
 
 const configure = (app) => {
-    app.use('/users', userRoutes);
+    app.use('/api', routes);
 }
 
 export default configure;
