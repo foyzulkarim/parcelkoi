@@ -1,5 +1,5 @@
 import express from "express";
-import configure from "./controllers";
+import configureRoutes from "./controllers";
 import { handleRequest, handleError } from "./middlewares/index";
 import { infoLogger } from "./logger";
 import dotenv from "dotenv";
@@ -13,9 +13,9 @@ app.use(express.json());
 app.use(handleRequest);
 
 if (process.env.ENVIRONMENT != 'TEST')
-    app.use(infoLogger);
+    app.use(infoLogger());
 
-configure(app);
+configureRoutes(app);
 
 app.use(handleError);
 

@@ -1,6 +1,5 @@
 import winston from "winston";
 import expressWinston from "express-winston";
-import winstonFile from "winston-daily-rotate-file";
 import winstonMongo from "winston-mongodb";
 import { ElasticsearchTransport } from "winston-elasticsearch";
 
@@ -30,12 +29,6 @@ const esTransport = new (ElasticsearchTransport)(elasticsearchOptions);
 export const infoLogger = () => expressWinston.logger({
     transports: [
         new winston.transports.Console(),
-        new (winston.transports.DailyRotateFile)(
-            {
-                filename: 'log-info-%DATE%.log',
-                datePattern: 'yyyy-MM-DD-HH'
-            }
-        ),
         esTransport
     ],
     format: winston.format.combine(winston.format.colorize(), winston.format.json()),
@@ -46,12 +39,6 @@ export const infoLogger = () => expressWinston.logger({
 export const errorLogger = (uri) => expressWinston.errorLogger({
     transports: [
         new winston.transports.Console(),
-        new (winston.transports.DailyRotateFile)(
-            {
-                filename: 'log-error-%DATE%.log',
-                datePattern: 'yyyy-MM-DD-HH'
-            }
-        ),
         mongoErrorTransport(uri),
         esTransport
     ],
