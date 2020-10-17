@@ -1,6 +1,6 @@
 import express from "express";
 import { saveUser, getAllUsers, update, deleteById, getUserById } from "../services/userService";
-import validators from "../models/view-models";
+import validators from "../models/request-models";
 import { handleValidation } from "../middlewares";
 import { NotFound } from '../utils/errors';
 

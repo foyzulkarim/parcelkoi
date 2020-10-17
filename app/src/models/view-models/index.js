@@ -1,5 +1,3 @@
-import validate from "./user-view-model";
+import UserViewModel from "./user-view-model";
 
-const validators = { userSchemaValidate: validate };
-
-export default validators;
+export default { UserViewModel };

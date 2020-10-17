@@ -1,10 +1,12 @@
-import models from "../models";
+import models from "../models/data-models";
+import { UserViewModel } from "../models/view-models/user-view-model";
 import { NotFound } from "../utils/errors";
 
 export const getAllUsers = async () => {
     const User = models.User;
     const users = await User.find();
-    return users;
+    let userViewModels = users.map(user => new UserViewModel(user));
+    return userViewModels;
 }
 
 export const saveUser = async (user) => {

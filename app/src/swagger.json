@@ -10,7 +10,7 @@
         }
     },
     "host": "localhost:3000",
-    "basePath": "/",
+    "basePath": "/api",
     "tags": [
         {
             "name": "Users",
@@ -141,16 +141,19 @@
             ],
             "properties": {
                 "username": {
-                    "type": "string"
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9]*$",
+                    "minLength": 3,
+                    "maxLength": 30
                 }
             }
         },
         "UserViewModel": {
             "properties": {
-                "_id": {
-                    "$id": "#/properties/_id",
+                "id": {
+                    "$id": "#/properties/id",
                     "type": "string",
-                    "title": "The _id schema",
+                    "title": "The id schema",
                     "description": "An explanation about the purpose of this instance.",
                     "default": "",
                     "examples": [
