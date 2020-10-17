@@ -10,7 +10,7 @@
         }
     },
     "host": "localhost:3000",
-    "basePath": "/api/v1",
+    "basePath": "/",
     "tags": [
         {
             "name": "Users",
@@ -137,29 +137,51 @@
     "definitions": {
         "User": {
             "required": [
-                "email",
-                "_id"
+                "username"
             ],
             "properties": {
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "UserViewModel": {
+            "properties": {
                 "_id": {
+                    "$id": "#/properties/_id",
                     "type": "string",
-                    "uniqueItems": true
+                    "title": "The _id schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "5f8abd12a57f4e103cb4d302"
+                    ]
                 },
-                "email": {
+                "username": {
+                    "$id": "#/properties/username",
                     "type": "string",
-                    "uniqueItems": true
+                    "title": "The username schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "u001"
+                    ]
                 },
-                "lastName": {
-                    "type": "string"
-                },
-                "firstName": {
-                    "type": "string"
+                "createdAt": {
+                    "$id": "#/properties/createdAt",
+                    "type": "string",
+                    "title": "The createdAt schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "2020-10-17T09:44:50.543Z"
+                    ]
                 }
             }
         },
         "Users": {
             "type": "array",
-            "$ref": "#/definitions/User"
+            "$ref": "#/definitions/UserViewModel"
         }
     }
 }
