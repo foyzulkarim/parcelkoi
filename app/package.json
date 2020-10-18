@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -r esm ./src/server.js",
+    "start": "nodemon --inspect=0.0.0.0 -r esm ./src/server.js",
     "test": "jest --runInBand --force-exit"
   },
   "keywords": [],
