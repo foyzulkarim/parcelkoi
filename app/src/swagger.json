@@ -32,6 +32,7 @@
                 "tags": [
                     "Users"
                 ],
+                "summary": "Create new user in system",
                 "description": "Create new user in system",
                 "parameters": [
                     {
@@ -65,6 +66,79 @@
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/Users"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Updates the user",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "User payload for update",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UserViewModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/{id}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get user by id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the user",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/UserViewModel"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Delete user by id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the user",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "string"
                         }
                     }
                 }
