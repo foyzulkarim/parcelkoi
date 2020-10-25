@@ -1,6 +1,9 @@
 import mongoose from "mongoose";
 
-export const uri = "mongodb://localhost:27017/parcelkoi";
+const HOST = process.env.MONGODB_HOST || "localhost";
+console.log('process.env.MONGODB_HOST - ', HOST);
+
+export const uri = `mongodb://${HOST}:27017/parcelkoi`;
 const options = {};
 
 
