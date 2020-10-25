@@ -18,9 +18,11 @@ const mongoErrorTransport = (uri) => new winston.transports.MongoDB({
     metaKey: 'meta'
 });
 
+const HOST = process.env.ELASTICSEARCH_HOST || "localhost";
+
 const elasticsearchOptions = {
     level: 'info',
-    clientOpts: { node: 'http://localhost:9200' },
+    clientOpts: { node: `http://${HOST}:9200` },
     indexPrefix: 'log-parcelkoi'
 };
 

@@ -1,0 +1,56 @@
+version: "3.8"
+services:
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - mynet
+    volumes:
+      - mongo_data:/data/db
+  elasticsearch:
+    image: elasticsearch:7.9.2
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+    ports:
+      - "9200:9200"
+    networks:
+      - mynet
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+  kibana:
+    image: kibana:7.9.2
+    container_name: kibana
+    ports:
+      - "5601:5601"
+    networks:
+      - mynet
+    volumes:
+      - kibana_data:/usr/share/kibana/data
+  parcelkoi:
+    image: parcelkoi
+    container_name: parcelkoi
+    ports:
+      - "3000:3000"
+    networks:
+      - mynet
+    volumes:
+      - parcelkoi_data:/usr/share/parcelkoi/data
+    environment:
+      - DEBUG=1
+      - MONGODB_HOST=mongo
+      - ELASTICSEARCH_HOST=elasticsearch
+    depends_on:
+      - mongo
+      - elasticsearch
+      - kibana
+networks:
+  mynet:
+    driver: bridge
+volumes:
+  mongo_data:
+  elasticsearch_data:
+  kibana_data:
+  parcelkoi_data:
