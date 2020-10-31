@@ -17,7 +17,7 @@
 // console.log(token);
 
 var jwt = require('jsonwebtoken');
-var token = jwt.sign({ foo: 'bar' }, 'shhhhh');
+var token = jwt.sign({ foo: 'bar', role: 'admin', username: 'foyzul', exp: Math.floor(Date.now() / 1000) + 3600 }, 'secret');
 console.log(token);
-var decoded = jwt.verify(token, 'shhhhh');
-console.log(decoded.foo) // bar
+var decoded = jwt.verify(token, 'secret');
+console.log(decoded) // bar
